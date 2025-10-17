@@ -27,10 +27,6 @@ export default function Home() {
 const sendEmail = (e) => {
   e.preventDefault();
 
-  console.log('Service:', process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID);
-console.log('Template:', process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID);
-console.log('Public:', process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
-
 
   emailjs.sendForm(
     process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
@@ -39,12 +35,12 @@ console.log('Public:', process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
     process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
   ).then(
     () => {
-      alert('✅ Message sent successfully!');
+      alert('✅ Message sent successfully!✅');
       e.target.reset();
     },
     (error) => {
       console.error('❌ Error sending message:', error);
-      alert('Failed to send message. Try again later.');
+      alert('❌Failed to send message. Try again later.❌');
     }
   );
 };
@@ -57,7 +53,7 @@ console.log('Public:', process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
     <div className="w-screen space-y-17 bg-black">
       <nav className="fixed shadow-lg shadow-gray-600 w-full p-5 top-0 left-0 z-50 bg-[#0a0a0a] bg-opacity-90 backdrop-blur-md border-b border-gray-800">
         <div className="flex font-serif  justify-between ">
-          <h1 className="font-bold text-2xl">Abubakar Jamal</h1>
+          <h1 className="font-bold text-2xl text-gray-100">Abubakar Jamal</h1>
 
           <div className="hidden text-right md:flex font-medium space-x-6">
             <a href="#about" className="ml-3 hover:text-orange-500  active:text-orange-700">About</a>
@@ -65,7 +61,7 @@ console.log('Public:', process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
             <a href="#contact" className="md:mr-10 hover:text-orange-500 active:text-orange-700">Contact</a>
           </div>
 
-          <button className="md:hidden  text-2xl absolute top-5 right-6 z-50 transition-transform duration-350" onClick={() => setIsOpen(!isOPen)}>
+          <button className="md:hidden text-gray-100 text-2xl absolute top-5 right-6 z-50 transition-transform duration-350" onClick={() => setIsOpen(!isOPen)}>
             <span className={`block transition-transform duration-500 transform hover:rotate-180 top-0 cursor-pointer right-0${isOPen ? "rotate-180 opacity-100" : "rotate-0 opacity-0 "
               }`}>
               <CgClose />
@@ -79,7 +75,7 @@ console.log('Public:', process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
 
         </div>
 
-        <div className={`md:hidden bg-slate-900 text-center 
+        <div className={`md:hidden text-gray-100 bg-slate-900 text-center 
       rounded-2xl overflow-hidden transition-all duration-650 ease-in-out flex flex-col ${isOPen ? "min-h-full min-w-full opacity-150" : "max-h-0 opacity-0"
           }`}>
           <a className="py-3 active:text-orange-500" href="#about" onClick={() => setIsOpen(false)}>About</a>

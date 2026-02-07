@@ -1,5 +1,4 @@
 'use client';
-
 import { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { CgClose } from 'react-icons/cg';
@@ -9,110 +8,72 @@ import { useTheme } from '@/context/ThemeContext';
 import Link from 'next/link';
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const { theme, toggleTheme, mounted } = useTheme();
+    const [isOpen, setIsOpen] = useState(false);
+    const { theme, toggleTheme, mounted } = useTheme();
 
-  return (
-    <nav className="fixed top-0 left-0 z-50 w-full bg-[#0a0a0a]/90 backdrop-blur-md border-b border-gray-800 shadow-lg transition-colors overflow-x-hidden">
-        
-      <div className="flex items-center justify-between px-4 py-5 font-serif max-w-7xl mx-auto">
-        <Link href="/" className="font-bold text-2xl text-gray-100">
-          Abubakar Jamal
-        </Link>
+    const handleThemeToggle = () => {
+        console.log('Theme button clicked, current theme:', theme);
+        toggleTheme();
+    };
 
-        <div className="hidden md:flex items-center space-x-6 font-medium">
-          <a href="#about" className="text-gray-100 hover:text-orange-500">
-            About
-          </a>
-          <a href="#projects" className="text-gray-100 hover:text-orange-500">
-            Projects
-          </a>
-          <a href="#contact" className="text-gray-100 hover:text-orange-500">
-            Contact
-          </a>
+    return (
+        <nav className="fixed shadow-lg shadow-gray-600 w-full p-5 top-0 left-0 z-50 bg-[#0a0a0a] bg-opacity-90 backdrop-blur-md border-b border-gray-800 transition-colors duration-300">
+            <div className="flex font-serif justify-between items-center">
+                <Link href="/" className="font-bold text-2xl text-gray-100">Abubakar Jamal</Link>
 
-          <a
-            href="https://wa.me/233257182413"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-2xl text-gray-100 hover:text-green-500"
-          >
-            <SiWhatsapp />
-          </a>
+                <div className="hidden text-right md:flex font-medium space-x-6 items-center">
+                    <a href="#about" className="ml-3 text-gray-100 hover:text-orange-500 active:text-orange-700">About</a>
+                    <a href="#projects" className="ml-3 text-gray-100 hover:text-orange-500 active:text-orange-700">Projects</a>
+                    <a href="#contact" className="text-gray-100 hover:text-orange-500 active:text-orange-700">Contact</a>
+                    <a href="https://wa.me/233257182413" target="_blank" rel="noopener noreferrer" className="text-gray-100 hover:text-green-500 active:text-green-700 text-2xl transition-colors">
+                        <SiWhatsapp />
+                    </a>
+                    {mounted && (
+                        <button
+                            onClick={handleThemeToggle}
+                            className="ml-3 text-gray-100 hover:text-orange-500 text-2xl transition-colors p-2 rounded-lg hover:bg-gray-700"
+                            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                            type="button"
+                        >
+                            {theme === 'dark' ? <BsSun /> : <BsMoon />}
+                        </button>
+                    )}
+                </div>
 
-          {mounted && (
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg text-2xl text-gray-100 hover:text-orange-500 hover:bg-gray-700 transition"
-              type="button"
-            >
-              {theme === 'dark' ? <BsSun /> : <BsMoon />}
-            </button>
-          )}
-        </div>
+                <div className="flex items-center space-x-3 md:hidden">
+                    {mounted && (
+                        <button
+                            onClick={handleThemeToggle}
+                            className="text-gray-100 hover:text-orange-500 text-2xl transition-colors p-2 rounded-lg hover:bg-gray-700"
+                            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                            type="button"
+                        >
+                            {theme === 'dark' ? <BsSun /> : <BsMoon />}
+                        </button>
+                    )}
+                    <button
+                        className="md:hidden text-gray-100 bg-transparent mt-1 text-2xl transition-transform duration-300"
+                        onClick={() => setIsOpen(prev => !prev)}
+                    >
+                        {isOpen ? (
+                            <CgClose className="transition-transform duration-500 rotate-180" />
+                        ) : (
+                            <GiHamburgerMenu className="transition-transform duration-500" />
+                        )}
+                    </button>
 
-        <div className="flex items-center space-x-2 md:hidden">
-          {mounted && (
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg text-2xl text-gray-100 hover:text-orange-500 hover:bg-gray-700 transition"
-              type="button"
-            >
-              {theme === 'dark' ? <BsSun /> : <BsMoon />}
-            </button>
-          )}
+                </div>
+            </div>
 
-          <button
-            onClick={() => setIsOpen(prev => !prev)}
-            className="text-2xl text-gray-100 transition-transform"
-            type="button"
-          >
-            {isOpen ? (
-              <CgClose className="rotate-180 transition-transform duration-300" />
-            ) : (
-              <GiHamburgerMenu className="transition-transform duration-300" />
-            )}
-          </button>
-        </div>
-      </div>
-
-      <div
-        className={`md:hidden overflow-hidden bg-slate-900 text-center transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <a
-          href="#about"
-          className="block py-4 hover:bg-gray-700"
-          onClick={() => setIsOpen(false)}
-        >
-          About
-        </a>
-        <a
-          href="#projects"
-          className="block py-4 hover:bg-gray-700"
-          onClick={() => setIsOpen(false)}
-        >
-          Projects
-        </a>
-        <a
-          href="#contact"
-          className="block py-4 hover:bg-gray-700"
-          onClick={() => setIsOpen(false)}
-        >
-          Contact
-        </a>
-        <a
-          href="https://wa.me/233257182413"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 py-4 hover:bg-gray-700 text-green-500"
-          onClick={() => setIsOpen(false)}
-        >
-          <SiWhatsapp className="text-xl" />
-          <span>WhatsApp</span>
-        </a>
-      </div>
-    </nav>
-  );
+            <div className={`md:hidden text-gray-100 bg-slate-900 text-center rounded-2xl overflow-hidden transition-all duration-650 ease-in-out flex flex-col ${isOpen ? 'min-h-full min-w-full opacity-150' : 'max-h-0 opacity-0'}`}>
+                <a className="py-3 active:text-orange-500 hover:bg-gray-700" href="#about" onClick={() => setIsOpen(false)}>About</a>
+                <a className="py-3 active:text-orange-500 hover:bg-gray-700" href="#projects" onClick={() => setIsOpen(false)}>Projects</a>
+                <a className="py-3 active:text-orange-500 hover:bg-gray-700" href="#contact" onClick={() => setIsOpen(false)}>Contact</a>
+                <a className="py-3 active:text-green-500 flex items-center justify-center space-x-2 hover:text-green-500 hover:bg-gray-700" href="https://wa.me/233257182413" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
+                    <SiWhatsapp className="text-xl" />
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+        </nav>
+    );
 }

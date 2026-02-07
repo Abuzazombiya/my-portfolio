@@ -26,7 +26,11 @@ export default function Skills() {
 
   return (
     <section id="skills" className="bg-black text-gray-100 py-20 px-6 transition-colors" data-aos="fade-left">
+<div className='flex gap-2 justify-center items-center'>
+    <div className="h-1 bg-orange-500 w-25 mb-9"></div>
       <h1 className="text-3xl font-bold text-center text-orange-500 mb-10">My Skills</h1>
+    <div className="h-1 bg-orange-500 w-25 mb-9"></div>
+</div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
         {skills.map((skill, index) => (

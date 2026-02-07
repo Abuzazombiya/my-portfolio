@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section id="about" className="min-h-screen bg-black flex flex-col items-center justify-center text-gray-100 font-serif transition-colors" data-aos="fade-right">
 
-        <div className="flex px-5 gap-2">
+        <div className="flex gap-2">
             <div className="h-1 bg-orange-500 w-30 mt-5"></div>
             <h1 className="text-4xl font-bold text-orange-500 mb-6 text-center">About Me</h1>
             <div className="h-1 bg-orange-500 w-30 mt-5"></div> 

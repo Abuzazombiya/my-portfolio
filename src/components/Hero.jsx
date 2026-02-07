@@ -8,7 +8,7 @@ export default function Hero() {
   const { theme } = useTheme();
 
   return (
-    <section className="bg-black my-50 w-screen flex flex-col md:flex-row items-center justify-center text-gray-100 transition-colors" data-aos="fade-up">
+    <section className="bg-black py-50 w-screen flex flex-col md:flex-row items-center justify-center text-gray-100 transition-colors" data-aos="fade-up">
 
       <div className="flex-1 mt-28 md:mt-0 text-center justify-center space-y-10 font-serif">
         <h1 className={`text-5xl md:text-6xl font-bold bg-gradient-to-r from-orange-500 via-purple-500 to-blue-500 bg-clip-text text-transparent ${

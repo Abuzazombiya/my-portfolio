@@ -44,9 +44,15 @@ export default function Contact() {
 
   return (
     <section id="contact" className="bg-black text-gray-100 py-20 px-6 md:px-20 transition-colors" data-aos="fade-up">
-      <h2 className="text-3xl font-bold text-center text-orange-500 mb-10">
-        Contact Me
-      </h2>
+
+     <div className='flex gap-2 justify-center items-center'>
+        <div className="h-1 bg-orange-500 w-20 mb-9"></div>
+        <h2 className="text-3xl font-bold text-center text-orange-500 mb-10">
+            Contact Me
+        </h2>
+        <div className="h-1 bg-orange-500 w-20 mb-9"></div>
+     </div>
+
 
       <div className="grid md:grid-cols-2 gap-10">
         <div className="space-y-6 text-center md:text-left">
@@ -55,7 +61,7 @@ export default function Contact() {
             I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
           </p>
 
-          <div className="flex-col justify-center md:justify-start space-x-6 mt-6 text-2xl">
+          <div className="flex-col justify-center md:justify-start space-x-6 mt-6 text-xl">
             <a href="mailto:abubakarjamal9@icloud.com">
               <span className="font-bold text-orange-500 flex py-3"><MdEmail className="text-2xl" />Email:</span>
               abubakarjamal9@icloud.com

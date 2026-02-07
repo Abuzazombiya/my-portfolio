@@ -51,7 +51,12 @@ export default function Projects() {
 
   return (
     <section id="projects" className="min-h-1/2 bg-black pb-5 transition-colors" data-aos="fade-right">
-      <h2 className="text-center text-orange-500 text-3xl font-bold">My Projects</h2>
+
+    <div className='flex gap-2 justify-center items-center'>
+      <div className="h-1 bg-orange-500 w-30"></div>            
+        <h2 className="text-center text-orange-500 text-3xl font-bold">My Projects</h2>
+      <div className="h-1 bg-orange-500 w-30"></div>  
+    </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center px-6 mt-10">
         {projects.map((project, index) => (
